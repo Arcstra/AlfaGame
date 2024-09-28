@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi01cjrei16ll"]
+
+[ext_resource type="Texture2D" uid="uid://piw3hl2xcaol" path="res://Sprites/GG64.png" id="1_i43q5"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_qn21p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcp6n"]
+size = Vector2(22, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3xfx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i43q5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jo0n"]
+size = Vector2(20, 6)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_qn21p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dcp6n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_u3xfx")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="Sword" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Sword"]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_6jo0n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

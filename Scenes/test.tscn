@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=4 uid="uid://drvg57wsxc6xn"]
+
+[ext_resource type="Texture2D" uid="uid://dpo5ee6g4dars" path="res://Sprites/testTile.png" id="1_ua3ul"]
+[ext_resource type="PackedScene" uid="uid://bi01cjrei16ll" path="res://Scenes/player.tscn" id="2_w8a1y"]
+[ext_resource type="PackedScene" uid="uid://h3cigwxw1glt" path="res://Scenes/dwarf.tscn" id="3_natp8"]
+[ext_resource type="Script" path="res://Scripts/label.gd" id="4_p2riy"]
+[ext_resource type="Script" path="res://Scripts/npchp.gd" id="5_3n1pf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhygb"]
+texture = ExtResource("1_ua3ul")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_bjubl"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hhygb")
+
+[node name="Test" type="Node2D"]
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAWAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAAaAAsAAAAAAAAAAAAbAAsAAAAAAAAAAAAcAAsAAAAAAAAAAAAdAAsAAAAAAAAAAAAeAAsAAAAAAAAAAAAfAAsAAAAAAAAAAAAgAAsAAAAAAAAAAAAhAAsAAAAAAAAAAAAiAAsAAAAAAAAAAAAjAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bjubl")
+
+[node name="Player" parent="." instance=ExtResource("2_w8a1y")]
+position = Vector2(224, 313)
+
+[node name="Dwarf" parent="." instance=ExtResource("3_natp8")]
+position = Vector2(940, 320)
+
+[node name="PlayerHP" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_p2riy")
+
+[node name="NPCHP" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+horizontal_alignment = 2
+script = ExtResource("5_3n1pf")

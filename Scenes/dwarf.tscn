@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://h3cigwxw1glt"]
+
+[ext_resource type="Script" path="res://Scripts/dwarf.gd" id="1_a8uus"]
+[ext_resource type="Texture2D" uid="uid://dlt0els45gwjf" path="res://Sprites/Dvorf64.png" id="1_fparq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mut6j"]
+size = Vector2(18, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0cdr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fparq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3jd0"]
+size = Vector2(27, 8)
+
+[node name="Dwarf" type="CharacterBody2D"]
+collision_mask = 5
+script = ExtResource("1_a8uus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_mut6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w0cdr")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Sword" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Sword"]
+position = Vector2(25, 0)
+shape = SubResource("RectangleShape2D_p3jd0")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(640, 0)
+
+[node name="Careful" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="OneCareful" type="Timer" parent="."]
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="Careful" to="." method="_on_careful_timeout"]
+[connection signal="timeout" from="OneCareful" to="." method="_on_one_careful_timeout"]
