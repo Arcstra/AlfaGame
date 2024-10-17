@@ -15,6 +15,11 @@ run/main_scene="res://Scenes/test.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[global_group]
+
+"dwarf's friend"="группа, в которой состоят дворфы и их друзья"
+"player's friend"="игрок и невраги"
+
 [input]
 
 left={
