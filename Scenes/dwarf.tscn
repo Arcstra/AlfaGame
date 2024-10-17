@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3jd0"]
 size = Vector2(27, 8)
 
-[node name="Dwarf" type="CharacterBody2D"]
+[node name="Dwarf" type="CharacterBody2D" groups=["dwarf\'s friend"]]
 collision_mask = 5
 script = ExtResource("1_a8uus")
 

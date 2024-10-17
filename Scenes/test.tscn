@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://drvg57wsxc6xn"]
+[gd_scene load_steps=6 format=4 uid="uid://drvg57wsxc6xn"]
 
 [ext_resource type="Texture2D" uid="uid://dpo5ee6g4dars" path="res://Sprites/testTile.png" id="1_ua3ul"]
 [ext_resource type="PackedScene" uid="uid://bi01cjrei16ll" path="res://Scenes/player.tscn" id="2_w8a1y"]
 [ext_resource type="PackedScene" uid="uid://h3cigwxw1glt" path="res://Scenes/dwarf.tscn" id="3_natp8"]
-[ext_resource type="Script" path="res://Scripts/label.gd" id="4_p2riy"]
-[ext_resource type="Script" path="res://Scripts/npchp.gd" id="5_3n1pf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhygb"]
 texture = ExtResource("1_ua3ul")
@@ -28,16 +26,3 @@ position = Vector2(224, 313)
 
 [node name="Dwarf" parent="." instance=ExtResource("3_natp8")]
 position = Vector2(940, 320)
-
-[node name="PlayerHP" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("4_p2riy")
-
-[node name="NPCHP" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-horizontal_alignment = 2
-script = ExtResource("5_3n1pf")

@@ -4,15 +4,17 @@ extends CharacterBody2D
 const SPEED = 320.0
 const JUMP_VELOCITY = -200.0
 
-var canHit = true
+var canHit = true # Имеет ли возможность ударить
 var damage = 1
 var hp = 5
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("hit") and canHit:
 		hit()
 		canHit = false
-		$Cooldown.start()
+		$Cooldown.start() # Запускает таймер кулдауна
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,17 +43,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+# Наносит урон всем, кому можно
 func hit():
 	for body in $Sword.get_overlapping_bodies():
-		if body.has_method("die"):
+		if body.has_method("die") and not body.is_in_group("player's friend"):
 			body.die(damage)
 
 
+# Учитывает полученный урон, если здоровья < 0, то персонаж удаляется со сцены 
+# P.S. в будущем требует доработки
 func die(damage: int):
 	hp -= damage
 	if hp <= 0:
-		queue_free()
+		queue_free() # Удаляет со сцены
 
 
+# Срабатывает каждый раз, когда время кулдауна закончилось
 func _on_cooldown_timeout() -> void:
 	canHit = true

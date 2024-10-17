@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi01cjrei16ll"]
 
-[ext_resource type="Texture2D" uid="uid://piw3hl2xcaol" path="res://Sprites/GG64.png" id="1_i43q5"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qn21p"]
+[ext_resource type="Texture2D" uid="uid://dkk2mwsjpefu3" path="res://Sprites/newGG64.png" id="2_gffg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcp6n"]
 size = Vector2(22, 62)
@@ -10,7 +10,7 @@ size = Vector2(22, 62)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i43q5")
+"texture": ExtResource("2_gffg5")
 }],
 "loop": true,
 "name": &"default",
@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jo0n"]
 size = Vector2(20, 6)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player\'s friend"]]
 collision_mask = 3
 script = ExtResource("1_qn21p")
 
