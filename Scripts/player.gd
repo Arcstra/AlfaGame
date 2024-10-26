@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 320.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -350.0
 
 var canHit = true # Имеет ли возможность ударить
 var damage = 1
